@@ -9,6 +9,8 @@ import jakarta.servlet.ServletContext;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 @WebServlet("/visualizar-estadistica")
 public class VisualizarEstadistica extends HttpServlet {
@@ -29,14 +31,20 @@ public class VisualizarEstadistica extends HttpServlet {
         out.println("<table>");
         out.println("<tr><th>Película</th><th>Entradas Vendidas</th></tr>");
 
-        String[] peliculas = {"LILO_STICH", "LA_MUJER_DE_LA_FILA", "DEMON_SLAYER", "LA_LUZ_QUE_IMAGINAMOS"};
-        String[] nombres = {"LILO & STICH", "LA MUJER DE LA FILA", "DEMON SLAYER", "LA LUZ QUE IMAGINAMOS"};
+        Map<String,String> peliculasMap = new LinkedHashMap<>();
+        peliculasMap.put("LILO_STICH", "LILO & STICH");
+        peliculasMap.put("LA_MUJER_DE_LA_FILA", "LA MUJER DE LA FILA");
+        peliculasMap.put("DEMON_SLAYER", "DEMON SLAYER");
+        peliculasMap.put("LA_LUZ_QUE_IMAGINAMOS", "LA LUZ QUE IMAGINAMOS");
 
-        for (int i = 0; i < peliculas.length; i++) {
-            Integer cant = (Integer) ctx.getAttribute(peliculas[i]);
+        for (Map.Entry<String,String> entry : peliculasMap.entrySet()) {
+            String key = entry.getKey();      // clave usada en ServletContext
+            String nombre = entry.getValue(); // nombre a mostrar
+            Integer cant = (Integer) ctx.getAttribute(key);
             if (cant == null) cant = 0;
-            out.println("<tr><td>" + nombres[i] + "</td><td>" + cant + "</td></tr>");
+            out.println("<tr><td>" + nombre + "</td><td>" + cant + "</td></tr>");
         }
+
 
         out.println("</table>");
 
