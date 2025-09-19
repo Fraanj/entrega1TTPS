@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cinema La Plata - Comprar Entradas</title>
+  <link rel="stylesheet" href="css/index.css">
+</head>
+
+<body>
+<div class="container">
+  <h1>Cinema La Plata</h1>
+  <h2>Comprar Entradas</h2>
+
+  <form action="procesar-compra" method="post">
+    <div class="form-group">
+      <label for="nombres">Nombres:</label>
+      <input type="text" id="nombres" name="nombres" required>
+    </div>
+
+    <div class="form-group">
+      <label for="apellido">Apellido:</label>
+      <input type="text" id="apellido" name="apellido" required>
+    </div>
+
+    <div class="form-group">
+      <label for="email">E-mail:</label>
+      <input type="email" id="email" name="email" required>
+    </div>
+
+    <div class="form-group">
+      <label for="dni">DNI:</label>
+      <input type="text" id="dni" name="dni" pattern="[0-9]{7,8}" title="Ingrese un DNI válido (7-8 dígitos)" required>
+    </div>
+
+
+    <div class="form-group">
+      <label for="pelicula">Película:</label>
+      <select id="pelicula" name="pelicula" required>
+        <option value="">Seleccione una película</option>
+        <option value="LILO_STICH">LILO & STICH</option>
+        <option value="LA_MUJER_DE_LA_FILA">LA MUJER DE LA FILA</option>
+        <option value="DEMON_SLAYER">DEMON SLAYER</option>
+        <option value="LA_LUZ_QUE_IMAGINAMOS">LA LUZ QUE IMAGINAMOS</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="cantidadEntradas">Cantidad de Entradas:</label>
+      <input type="number" id="cantidadEntradas" name="cantidadEntradas" min="1" max="10" required>
+    </div>
+
+    <button type="submit">Comprar Entradas</button>
+  </form>
+</div>
+</body>
+</html>
